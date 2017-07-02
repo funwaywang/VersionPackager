@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VPackager"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:Double x:Key="HeaderTextSize">36</sys:Double>
+    <sys:Double x:Key="SubheaderTextSize">30</sys:Double>
+    <sys:Double x:Key="TitleTextSize">24</sys:Double>
+    <sys:Double x:Key="SubtitleTextSize">20</sys:Double>
+    <sys:Double x:Key="BaseTextSize">14</sys:Double>
+    <sys:Double x:Key="BodyTextSize">14</sys:Double>
+    <sys:Double x:Key="CaptionTextSize">12</sys:Double>
+
+    <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Thin"/>
+        <Setter Property="FontSize" Value="{StaticResource HeaderTextSize}"/>
+        <Setter Property="LineHeight" Value="56"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="SubheaderTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Thin"/>
+        <Setter Property="FontSize" Value="{StaticResource SubheaderTextSize}"/>
+        <Setter Property="LineHeight" Value="40"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TitleTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleTextSize}"/>
+        <Setter Property="LineHeight" Value="28"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="SubtitleTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleTextSize}"/>
+        <Setter Property="LineHeight" Value="24"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="BaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="{StaticResource BaseTextSize}"/>
+        <Setter Property="LineHeight" Value="14"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="BodyTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
+        <Setter Property="LineHeight" Value="14"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CaptionTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource CaptionTextSize}"/>
+        <Setter Property="LineHeight" Value="14"/>
+    </Style>
+    <Style TargetType="Control" x:Key="BaseControlTextStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="{StaticResource BaseTextSize}"/>
+    </Style>
+    <Style TargetType="Control" x:Key="BodyControlTextStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
+    </Style>
+    <Style TargetType="Control" x:Key="SubtitleControlTextStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleTextSize}"/>
+    </Style>
+</ResourceDictionary>

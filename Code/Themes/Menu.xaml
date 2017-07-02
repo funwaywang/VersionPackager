@@ -1,0 +1,117 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VPackager">
+    <ControlTemplate TargetType="MenuItem" x:Key="MenuItemTemplate">
+        <Border x:Name="templateRoot" 
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}" 
+                TextElement.Foreground="{TemplateBinding Foreground}"
+                SnapsToDevicePixels="True"
+                Padding="4">
+            <Grid Margin="-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup"/>
+                    <ColumnDefinition Width="13"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                
+                <ContentPresenter x:Name="Icon" 
+                                  Content="{TemplateBinding Icon}"
+                                  ContentSource="Icon" 
+                                  HorizontalAlignment="Center"
+                                  Height="16"
+                                  Margin="3" 
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                  VerticalAlignment="Center"
+                                  Width="16"/>
+                
+                <Border x:Name="GlyphPanel"
+                        BorderBrush="#FF26A0DA"
+                        BorderThickness="1"
+                        Background="#3D26A0DA" 
+                        ClipToBounds="False" 
+                        HorizontalAlignment="Center"
+                        Height="22"
+                        Margin="-1,0,0,0"
+                        Visibility="Hidden" 
+                        VerticalAlignment="Center"
+                        Width="22">
+                    <Path x:Name="Glyph" Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" 
+                            Fill="#FF212121" FlowDirection="LeftToRight" Height="11" Width="10"/>
+                </Border>
+                <ContentPresenter x:Name="menuHeaderContainer"
+                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                  Content="{TemplateBinding Header}" 
+                                  Grid.Column="2"
+                                  ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                  ContentSource="Header" 
+                                  HorizontalAlignment="Left"
+                                  Margin="{TemplateBinding Padding}"
+                                  RecognizesAccessKey="True"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                  VerticalAlignment="Center"/>
+                <TextBlock x:Name="menuGestureText"
+                           Grid.Column="4"
+                           Margin="{TemplateBinding Padding}" 
+                           Opacity="0.7" 
+                           Text="{TemplateBinding InputGestureText}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource MenuHoverBackBrushKey}"/>
+                <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{StaticResource MenuHoverForeBrushKey}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{StaticResource MenuForeDisabledBrushKey}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>  
+    
+    <Style TargetType="MenuItem">
+        <Setter Property="Foreground" Value="{StaticResource MenuForeBrushKey}"/>
+        <Setter Property="Template" Value="{StaticResource MenuItemTemplate}"/>
+    </Style>
+
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border BorderThickness="0 0 0 1" Opacity=".65" BorderBrush="{StaticResource MenuPanelBorderBrushKey}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ContextMenu">        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{StaticResource MenuBackBrushKey}" 
+                            BorderBrush="{StaticResource MenuPanelBorderBrushKey}"
+                            BorderThickness="1"
+                            MinWidth="150" Margin="0 0 5 5">
+                        <ItemsPresenter/>
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" ShadowDepth="2" Opacity=".3"/>
+                        </Border.Effect>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

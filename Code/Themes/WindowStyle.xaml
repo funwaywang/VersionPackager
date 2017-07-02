@@ -1,0 +1,162 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VPackager">
+    <local:TextLocalConverter x:Key="TextLocalConverter"/>
+
+    <Style TargetType="Button" x:Key="PopupCaptionCloseButtonStyle">
+        <Setter Property="Content" Value="&#x72;"/>
+        <Setter Property="FontFamily" Value="Marlett"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Foreground" Value="#880E4F"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Command" Value="{x:Static local:Commands.ClosePopup}"/>
+        <Setter Property="ToolTip" Value="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Close'}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="OutBox"
+                            SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="1"
+                            Padding="{TemplateBinding Padding}" 
+                            Margin="{TemplateBinding Margin}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}" 
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                        <ContentPresenter Name="Cp" 
+                                          Content="{TemplateBinding Content}" 
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"
+                                          TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                          TextElement.FontSize="{TemplateBinding FontSize}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="OutBox" Property="Background" Value="{StaticResource WindowCloseButtonBackBrushKey}"/>
+                            <Setter TargetName="Cp" Property="TextElement.Foreground" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:DialogTitle}">
+        <Style.Resources>
+            <local:TextLocalConverter x:Key="TextLocalConverter"/>
+        </Style.Resources>
+        <Setter Property="Header" Value="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource TextLocalConverter}}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleTextSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource PopupTitleBrushKey}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DialogTitle}">
+                    <Grid SnapsToDevicePixels="True"
+                          Margin="{TemplateBinding Padding}"
+                          Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ContentPresenter Grid.Column="0" 
+                                          ContentSource="Header"
+                                          VerticalAlignment="Center"
+                                          Margin="4,1,0,1"
+                                          TextElement.FontSize="{TemplateBinding FontSize}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        
+                        <ContentPresenter Grid.Column="1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Window}" x:Key="DialogWindowStyle">
+        <Style.Resources>
+            <local:TextLocalConverter x:Key="TextLocalConverter"/>
+        </Style.Resources>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="Background" Value="{StaticResource PopupBackBrushKey}"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"  UseAeroCaptionButtons="False"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="1"
+                            Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
+                            Margin="{TemplateBinding Margin}"
+                            BorderThickness="1" BorderBrush="{StaticResource PopupBorderBrushKey}">
+                        <Grid DataContext="{Binding Model, RelativeSource={RelativeSource AncestorType=Window}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <local:DialogTitle Grid.Row="0" 
+                                               Header="{Binding Title, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TextLocalConverter}}">
+                                <Button Style="{StaticResource PopupCaptionCloseButtonStyle}" 
+                                        FontSize="20" 
+                                        Visibility="{Binding CloseButtonVisibility, RelativeSource={RelativeSource AncestorType=local:DialogTitle}}"/>
+                            </local:DialogTitle>
+
+                            <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                <Setter Property="WindowChrome.WindowChrome">
+                    <Setter.Value>
+                        <WindowChrome CaptionHeight="0" ResizeBorderThickness="4"  UseAeroCaptionButtons="False"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="WindowButtonStyle">
+        <Setter Property="FontFamily" Value="Marlett"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#90A4AE"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="OutBox" 
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}" 
+                            TextElement.Foreground="{TemplateBinding Foreground}" 
+                            TextElement.FontFamily="{TemplateBinding FontFamily}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="OutBox" Property="Background" Value="{StaticResource WindowButtonBackBrushKey}"/>
+                            <Setter TargetName="OutBox" Property="TextElement.Foreground" Value="#263238"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="Content" Value="&#x72;"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="OutBox" Property="Background" Value="{StaticResource WindowCloseButtonBackBrushKey}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

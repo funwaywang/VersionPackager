@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VPackager">
+    <Color x:Key="TreeSelectionBackColorKey">#fdcd2d</Color>
+    <Color x:Key="TreeSelectionForeColorKey">#261c1d</Color>
+    
+    <Color x:Key="SharpBackColorKey">#B2DFDB</Color>
+    <Color x:Key="SharpForeColorKey">#212121</Color>
+    <Color x:Key="MediumBackColorKey">#bdc3c7</Color>
+    <Color x:Key="MediumForeColorKey">#34495e</Color>
+    <Color x:Key="MediumDarkColorKey">#95a5a6</Color>
+    <Color x:Key="MediumLightColorKey">#ecf0f1</Color>
+    <Color x:Key="DarkColorKey">#212121</Color>
+    <Color x:Key="LightColorKey">#FAFAFA</Color>
+    <Color x:Key="ErrorColorKey">#c00</Color>
+
+    <SolidColorBrush x:Key="WindowBackBrushKey" Color="#0f4e31"/>
+    <SolidColorBrush x:Key="WindowForeBrushKey" Color="#c7f0d2"/>
+    <SolidColorBrush x:Key="WindowTitleBrushKey" Color="#c7f0d2"/>
+    <SolidColorBrush x:Key="WindowButtonBackBrushKey" Color="#f3b61d"/>
+    <SolidColorBrush x:Key="WindowCloseButtonBackBrushKey" Color="#a90817"/>
+    <SolidColorBrush x:Key="ToolbarBackBrushKey" Color="#0f4e31"/>
+    <SolidColorBrush x:Key="ToolbarForeBrushKey" Color="#c7f0d2"/>
+    <SolidColorBrush x:Key="ToolbarBorderBrushKey" Color="#0f4e31"/>
+    <SolidColorBrush x:Key="ToolButtonHoverBrushKey" Color="#a3cb68"/>
+    <SolidColorBrush x:Key="SideBoxBackBrushKey" Color="#3c9843"/>
+    <SolidColorBrush x:Key="SideBoxForeBrushKey" Color="#0b4a2d"/>
+    <SolidColorBrush x:Key="SideBoxBorderBrushKey" Color="#6666783a"/>
+    <SolidColorBrush x:Key="TreeSelectionBackBrushKey" Color="{StaticResource TreeSelectionBackColorKey}"/>
+    <SolidColorBrush x:Key="TreeSelectionForeBrushKey" Color="{StaticResource TreeSelectionForeColorKey}"/>
+    <SolidColorBrush x:Key="GridBackBrushKey" Color="#efd3a3"/>
+    <SolidColorBrush x:Key="GridForeBrushKey" Color="#0f280b"/>
+    <SolidColorBrush x:Key="GridLineBrushKey" Color="Transparent"/>
+    <SolidColorBrush x:Key="GridSelectionBackBrushKey" Color="#f9b816"/>
+    <SolidColorBrush x:Key="GridSelectionForeBrushKey" Color="#462607"/>
+    <SolidColorBrush x:Key="GridHeaderBackBrushKey" Color="#66783a"/>
+    <SolidColorBrush x:Key="GridHeaderForeBrushKey" Color="#beebce"/>
+    <SolidColorBrush x:Key="MenuBackBrushKey" Color="#a3cb68"/>
+    <SolidColorBrush x:Key="MenuForeBrushKey" Color="#157653"/>
+    <SolidColorBrush x:Key="MenuForeDisabledBrushKey" Color="#5f7537"/>
+    <SolidColorBrush x:Key="MenuPanelBorderBrushKey" Color="#5f7133"/>
+    <SolidColorBrush x:Key="MenuHoverBackBrushKey" Color="#177855"/>
+    <SolidColorBrush x:Key="MenuHoverForeBrushKey" Color="#e6d5bb"/>
+    <SolidColorBrush x:Key="ScrollBarThumbBrushKey" Color="#99a6cc69"/>
+    <SolidColorBrush x:Key="ScrollBarThumbHoverBrushKey" Color="#a6cc69"/>
+    <SolidColorBrush x:Key="ScrollBarThumbActiveBrushKey" Color="#e25a0c"/>
+    <SolidColorBrush x:Key="PopupBackBrushKey" Color="#f5e8f1"/>
+    <SolidColorBrush x:Key="PopupBorderBrushKey" Color="#f2d8a7"/>
+    <SolidColorBrush x:Key="PopupTitleBrushKey" Color="#11724f"/>
+    
+    <SolidColorBrush x:Key="SharpBackBrushKey" Color="{StaticResource SharpBackColorKey}"/>
+    <SolidColorBrush x:Key="SharpForeBrushKey" Color="{StaticResource SharpForeColorKey}"/>
+    <SolidColorBrush x:Key="MediumBackBrushKey" Color="{StaticResource MediumBackColorKey}"/>
+    <SolidColorBrush x:Key="MediumForeBrushKey" Color="{StaticResource MediumForeColorKey}"/>
+    <SolidColorBrush x:Key="MediumDarkBrushKey" Color="{StaticResource MediumDarkColorKey}"/>
+    <SolidColorBrush x:Key="MediumLightBrushKey" Color="{StaticResource MediumLightColorKey}"/>
+    <SolidColorBrush x:Key="DarkBrushKey" Color="{StaticResource DarkColorKey}"/>
+    <SolidColorBrush x:Key="LightBrushKey" Color="{StaticResource LightColorKey}"/>
+    <SolidColorBrush x:Key="ErrorBrushKey" Color="{StaticResource ErrorColorKey}"/>
+</ResourceDictionary>

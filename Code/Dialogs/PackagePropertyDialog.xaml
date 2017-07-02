@@ -1,0 +1,89 @@
+﻿<Window x:Class="VPackager.PackagePropertyDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VPackager"
+        mc:Ignorable="d"
+        Title="Package Options" Height="230" Width="500"
+        Style="{StaticResource DialogWindowStyle}" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2,4,4,4"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="2,4"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid SnapsToDevicePixels="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" DataContext="{Binding Model, RelativeSource={RelativeSource AncestorType=Window}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       Text="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Output Directory'}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                     Text="{Binding OutputDirectory, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0"
+                       Text="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Output File'}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                     Text="{Binding OutputFile, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       Text="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Version Pattern'}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="TxbVersionPattern"
+                     Text="{Binding VersionPattern, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleButton Grid.Row="2" Grid.Column="2" x:Name="BtnVersionPatterns" Margin="0,2" Padding="4,0"
+                          Style="{StaticResource DropDownButtonStyle}"
+                          IsChecked="{Binding ContextMenu.IsOpen, RelativeSource={RelativeSource Self}, Mode=TwoWay}"/>
+
+            <CheckBox Grid.Row="3" Grid.Column="1"
+                      IsChecked="{Binding BuildAllInOnePackage, Mode=TwoWay}"
+                      Content="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Build all-in-one package file'}"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Style="{StaticResource DialogButtonStyle}" 
+                    Click="BtnOK_Click"
+                    Content="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='OK'}"/>
+
+            <Button Grid.Column="1"
+                    Style="{StaticResource DialogButtonStyle}" 
+                    Content="{Binding Converter={StaticResource TextLocalConverter}, ConverterParameter='Cancel'}" 
+                    Click="BtnCancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>
