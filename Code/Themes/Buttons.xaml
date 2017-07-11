@@ -124,6 +124,9 @@
                         <Trigger Property="DropDownMenu" Value="{x:Null}">
                             <Setter TargetName="DropDownButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Cp" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Cp" Property="Opacity" Value=".5"/>
                             <Setter TargetName="DropDownButton" Property="Opacity" Value=".5"/>
